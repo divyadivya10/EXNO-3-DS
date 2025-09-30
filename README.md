@@ -37,28 +37,36 @@ df=pd.read_csv("Encoding Data.csv")
 df
 ```
 <img width="328" height="416" alt="image" src="https://github.com/user-attachments/assets/c0881d1f-cae0-418d-bec9-d4ee6f75d2d5" />
+
 ```
 from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
 pm=['Hot','Warm','Cold']
 e1=OrdinalEncoder(categories=[pm])
 e1.fit_transform(df[["ord_2"]])
+
 ```
+
 <img width="153" height="216" alt="image" src="https://github.com/user-attachments/assets/71e82b7b-5e2a-4a7e-8e7d-a3f9b86e1233" />
 
 ```
+
 df['bo2']=e1.fit_transform(df[["ord_2"]])
 df
+
 ```
 
 <img width="364" height="423" alt="image" src="https://github.com/user-attachments/assets/2c16b3ba-8674-470b-95a4-cff7ef885ec9" />
 
 ```
+
 le=LabelEncoder()
 dfc=df.copy()
 dfc['ord_2']=le.fit_transform(dfc['ord_2'])
 dfc
+
 ```
 <img width="364" height="429" alt="image" src="https://github.com/user-attachments/assets/fee6bea9-f093-40c2-9d95-eadbf480e995" />
+
 ```
 from sklearn.preprocessing import OneHotEncoder
 ohe=OneHotEncoder(sparse_output=False)
@@ -66,30 +74,42 @@ df2=df.copy()
 enc=pd.DataFrame(ohe.fit_transform(df2[["nom_0"]]))
 df2=pd.concat([df2,enc],axis=1)
 df2
+
 ```
+
 <img width="479" height="439" alt="image" src="https://github.com/user-attachments/assets/b84a6dc6-a4af-4b20-9ee5-f36630cd01c3" />
+
 ```
+
 pd.get_dummies(df2,columns=["nom_0"])
+
 ```
 <img width="736" height="425" alt="image" src="https://github.com/user-attachments/assets/9ccc75ee-113f-4839-8659-96aab4958b79" />
 
 ```
 pip install --upgrade category_encoders
+
 ```
+
 ```
+
 from category_encoders import BinaryEncoder
 df=pd.read_csv("data.csv")
 df
+
 ```
 ```
 be=BinaryEncoder()
 nd=be.fit_transform(df['Ord_2'])
 df
 ```
+
 dfb=pd.concat([df,nd],axis=1)
 dfb
 ```
+
 <img width="750" height="428" alt="image" src="https://github.com/user-attachments/assets/e9fb72a2-ef85-47f8-bd82-7063645564c1" />
+
 ```
 from category_encoders import TargetEncoder
 te=TargetEncoder()
@@ -98,6 +118,7 @@ new=te.fit_transform(X=CC["City"],y=CC["Target"])
 CC=pd.concat([CC,new],axis=1)
 CC
 ```
+
 <img width="605" height="420" alt="image" src="https://github.com/user-attachments/assets/eff5143d-f9cb-4e39-b0b6-3c1f86392d6a" />
 
 ```
@@ -107,11 +128,15 @@ import numpy as np
 df=pd.read_csv("Data_to_Transform.csv")
 df
 ```
+
 <img width="822" height="525" alt="image" src="https://github.com/user-attachments/assets/68ceefe9-4669-4c8b-bb77-0bbe8e330aeb" />
+
 ```
+
 df.skew()
 ```
 <img width="365" height="110" alt="image" src="https://github.com/user-attachments/assets/1a2f2e2c-d051-420f-953b-c1d2cf3d798a" />
+
 ```
 np.log(df["Highly Positive Skew"])
 ```
